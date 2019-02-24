@@ -3,8 +3,9 @@ import java.math.BigInteger;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class Problem4 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String str = input.nextLine();
         StringBuffer operatorStr = new StringBuffer(str);
@@ -24,7 +25,8 @@ public class Problem4 {
         // 提取数字并从字符串中删去
         while (matcher.find()) {
             numbers[count++] = matcher.group();
-            if ((operatorStr.charAt(matcher.start() - 1) == '+') || (operatorStr.charAt(matcher.start() - 1) == '-')){
+            if ((operatorStr.charAt(matcher.start() - 1) == '+') ||
+                    (operatorStr.charAt(matcher.start() - 1) == '-')) {
                 operatorStr.replace(matcher.start(), matcher.end(), " ");
             }
             else {
@@ -49,21 +51,22 @@ public class Problem4 {
         */
 
         String number1 = numbers[0];
-        for (int i = 1; i < count; i++){
+        for (int i = 1; i < count; i++) {
             String number2 = numbers[i];
-            BigInteger result = bigIntegerCompute(number1, number2, op.charAt(i-1));
+            BigInteger result =
+                    bigIntegerCompute(number1, number2, op.charAt(i - 1));
             number1 = result.toString();
         }
         System.out.println(number1);
     }
 
-    public static BigInteger bigIntegerCompute(String number1, String number2, char op){
+    public static BigInteger bigIntegerCompute(String number1, String number2, char op) {
         BigInteger num1 = new BigInteger(number1);
         BigInteger num2 = new BigInteger(number2);
-        if (op == '+'){
+        if (op == '+') {
             return num1.add(num2);
         }
-        else if (op == '-'){
+        else if (op == '-') {
             return num1.subtract(num2);
         }
         else {

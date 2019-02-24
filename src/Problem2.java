@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class Problem2 {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String str;
         Scanner input = new Scanner(System.in);
         str = input.nextLine();
         String pattern = "^[+-]?\\d+\\s+[+-]?\\d+$";
-        if (str.matches(pattern)){
+        if (str.matches(pattern)) {
             String[] numbers = str.split("\\s+");
             BigInteger a = new BigInteger(numbers[0]);
             BigInteger b = new BigInteger(numbers[1]);
