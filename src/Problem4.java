@@ -8,6 +8,7 @@ public class Problem4 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         String str = input.nextLine();
+        str = str.replaceAll(" +", "");
         StringBuffer operatorStr = new StringBuffer(str);
         String[] numbers = new String[100000];
         int count = 0;
@@ -60,7 +61,8 @@ public class Problem4 {
         System.out.println(number1);
     }
 
-    public static BigInteger bigIntegerCompute(String number1, String number2, char op) {
+    public static BigInteger bigIntegerCompute(
+            String number1, String number2, char op) {
         BigInteger num1 = new BigInteger(number1);
         BigInteger num2 = new BigInteger(number2);
         if (op == '+') {

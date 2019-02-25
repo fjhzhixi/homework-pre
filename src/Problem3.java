@@ -17,46 +17,8 @@ public class Problem3 {
         System.out.println(result.toString(toRadix));
     }
 
-    static char chs [] = new char[36];
-
-    static int flag = 0;
-
-    static {
-        for (int i = 0; i < 10; i++) {
-            chs[i] = (char)('0' + i);
-        }
-        for (int i = 10; i < chs.length; i++) {
-            chs[i] = (char)('A' + (i - 10));
-        }
+    public static String transRadix(String num, int fromRadix, int toRadix) {
+        return new BigInteger(num, fromRadix).toString(toRadix);
     }
-    /**
-     * 转换进制的方法
-     * @param num           原始数据的字符串形式
-     * @param fromRadix     原始数据的进制
-     * @param toRadix       目标数据的进制
-     * @return              目标数据的字符串形式
-     */
 
-    static String transRadix(String num, int fromRadix, int toRadix) {
-        // 先转化为10进制类型
-        BigInteger tempNumber = new BigInteger(num, fromRadix);
-        StringBuilder itemNumber = new StringBuilder();
-        // 反复除法进行目标进制转化
-        if (tempNumber.compareTo(new BigInteger("0")) == -1) {
-            tempNumber = tempNumber.abs();
-            flag = 1;
-        }
-        while (tempNumber.compareTo(new BigInteger("0")) == 1) {
-            itemNumber.append(chs[tempNumber.mod(new BigInteger(
-                    String.valueOf(toRadix))).intValue()]);
-            tempNumber = tempNumber.divide(
-                    new BigInteger(String.valueOf(toRadix)));
-        }
-        if (flag == 0) {
-            return itemNumber.reverse().toString();
-        }
-        else {
-            return ('-' + itemNumber.reverse().toString());
-        }
-    }
 }
